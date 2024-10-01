@@ -1,13 +1,24 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [ //Especifica las dependencias que se usaran en este componente
+    RouterOutlet, //Permite el uso de rutas hijas dentro de este componente
+    FormsModule //Permite usar formularios en este componente
+  ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styles: []
 })
+
+
 export class AppComponent {
-  title = 'angular-api-demo';
+  title = 'Pokemon World';
 }
+
+
+
+
+

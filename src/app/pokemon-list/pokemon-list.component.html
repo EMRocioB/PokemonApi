@@ -1,0 +1,81 @@
+<nav class="navbar">
+  <div class="container-fluid">
+    <form class="d-flex" role="search" (ngSubmit)="buscarPokemon()">
+      <input class="form-control me-2" [(ngModel)]="pokemonName" name="pokemonName" type="search" placeholder="Buscar Pokemon" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Buscar</button>
+    </form>
+  </div>
+</nav>
+
+<div class="row m-0" *ngIf="pokemonElegido">
+  <div class="col-4">
+    <div class="card">
+      <div class="card-header">
+        <img src="{{pokemonElegido.sprites.other.dream_world.front_default}}" alt="" class="img-fluid">
+      </div>
+      <div class="card-body">
+          <!-- Nombre del Pokemon -->
+          <p><strong>Nombre:</strong> {{pokemonElegido.name}}</p>
+
+          <!-- Peso del Pokemon -->
+          <p><strong>Peso:</strong> {{pokemonElegido.weight}}</p>
+
+          <!-- Poder (Estadistica del Pokemon) -->
+          <p><strong>Poder:</strong>
+            <span *ngFor="let stat of pokemonElegido.stats">
+              {{ stat.stat.name }}: {{ stat.base_stat }}<br>
+            </span>
+          </p>
+
+          <!-- Tipo del Pokemon -->
+          <p><strong>Tipo:</strong>
+            <span *ngFor="let tipo of pokemonElegido.types">
+              {{ tipo.type.name }}<br>
+            </span>
+          </p>
+      </div>
+      <div class="card-footer text-center">
+        <button class="btn btn-primary" (click)="evolucion()"> Ver Evoluciones</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-8">
+    <h1 class="text-center">Evoluciones</h1>
+    <div class="row m-0 d-flex justify-content-center">
+      <!-- Agregar columna para cada tarjeta -->
+      <div class="col-4" *ngFor="let p of listaEvoluciones">
+        <div class="card mb-3">
+          <div class="card-header text-center">
+            <img src="{{p.sprites.other.dream_world.front_default}}" alt="{{p.name}}" class="img-fluid">
+          </div>
+          <div class="card-body">
+            <!-- Nombre del Pokemon -->
+            <p><strong>Nombre:</strong> {{p.name}}</p>
+  
+            <!-- Peso del Pokemon -->
+            <p><strong>Peso:</strong> {{p.weight}}</p>
+  
+            <!-- Poder (Estadistica del Pokemon) -->
+            <p><strong>Poder:</strong>
+              <span *ngFor="let stat of p.stats">
+                {{ stat.stat.name }}: {{ stat.base_stat }}<br>
+              </span>
+            </p>
+  
+            <!-- Tipo del Pokemon -->
+            <p><strong>Tipo:</strong>
+              <span *ngFor="let tipo of p.types">
+                {{ tipo.type.name }}<br>
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+</div>
+
+
